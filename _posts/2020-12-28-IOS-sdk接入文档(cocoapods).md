@@ -194,7 +194,29 @@ adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
 ### 12、AppsFlyer
 ```txt
 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 AF_ENABLED
-[EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
+
+在以下方法中添加如下代码
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [EYSdkUtils initAppFlyer:@"XXXXXXXXXXXXXXXXX" appId:@"XXXXXXXXXXXXX"];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [EYSdkUtils appFlyerStart];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary *) options {
+    [EYSdkUtils appFlyerhandleOpenURL:url options:options];
+    return 
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
+    [EYSdkUtils appFlyerContinueUserActivity:userActivity restorationHandler:restorationHandler]
+    return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [EYSdkUtils appFlyerHandleNotification:userInfo]
+}
 ```
 
 ### 13、广点通买量
