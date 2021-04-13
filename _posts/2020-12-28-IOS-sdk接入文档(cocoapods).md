@@ -205,12 +205,12 @@ adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary *) options {
-    return [EYSdkUtils appFlyerhandleOpenURL:url options:options];
+    [EYSdkUtils appFlyerhandleOpenURL:url options:options];
+    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler {
-    [EYSdkUtils appFlyerContinueUserActivity:userActivity restorationHandler:restorationHandler]
-    return YES;
+    return [EYSdkUtils appFlyerContinueUserActivity:userActivity restorationHandler:restorationHandler]
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
