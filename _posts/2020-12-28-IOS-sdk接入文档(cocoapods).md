@@ -79,6 +79,8 @@ EYAdConfig* adConfig = [[EYAdConfig alloc] init];
 adConfig.adKeyData =  [EYSdkUtils readFileWithName:@"ios_ad_key_setting"];
 adConfig.adGroupData = [EYSdkUtils readFileWithName:@"ios_ad_cache_setting"];
 adConfig.adPlaceData = [EYSdkUtils readFileWithName:@"ios_ad_setting"];
+//新版配置文件需要设置，旧版配置文件不用设置
+adConfig.adSuiteData = [EYSdkUtils readFileWithName:@"ios_ad_group_setting"];
 
 //某些平台通过设置adConfig初始化
 adConfig.unityClientId = @"XXXXXX";
