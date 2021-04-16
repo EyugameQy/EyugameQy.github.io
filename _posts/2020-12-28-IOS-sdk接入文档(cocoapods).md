@@ -181,10 +181,12 @@ Info.plist 加上以下内容
 ```xml
 <key>GADIsAdManagerApp</key>
 <true/>
+<key>GADApplicationIdentifier</key>
+<string>XXXXXXXXX</string>
 ```
 配置admob client id
 ```oc
-adConfig.admobClientId = @"ca-app-pub-7585239226773233~4631740346";
+adConfig.admobClientId = @"XXXXXXXXX";
 ```
 
 ### 11、友盟
