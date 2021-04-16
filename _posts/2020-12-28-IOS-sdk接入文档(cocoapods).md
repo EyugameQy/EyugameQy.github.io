@@ -179,8 +179,6 @@ admob可以通过"firebase_sdk"模块或者"admob_sdk"模块来引入，海外�
 ```
 Info.plist 加上以下内容
 ```xml
-<key>GADIsAdManagerApp</key>
-<true/>
 <key>GADApplicationIdentifier</key>
 <string>XXXXXXXXX</string>
 ```
