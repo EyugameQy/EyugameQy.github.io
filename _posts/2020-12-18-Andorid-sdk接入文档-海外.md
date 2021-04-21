@@ -1,7 +1,7 @@
 ---
 title: Android自主接入文档（国外）
 author: wuxiaowei
-date: 2021-04-12 17:00:00 +0800
+date: 2021-04-21 10:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,海外]
 pin: true
@@ -180,8 +180,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 ```groovy
 
-implementation 'com.eyu.opensdk:core:1.7.36'
-implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
+implementation 'com.eyu.opensdk:core:1.8.0'
+implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.2.31'
 
 ```
 
@@ -198,34 +198,34 @@ implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
 dependencies {
 
     //max
-    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
+    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.2.31'
 
     //admob    
-    //implementation 'com.eyu.opensdk.ad.mediation:admob-adapter:19.8.0.27'
+    //implementation 'com.eyu.opensdk.ad.mediation:admob-adapter:19.8.0.28'
 
     //admob聚合
-    //implementation 'com.eyu.opensdk.ad.mediation:admob-compat_adapter:19.8.0.27'
+    //implementation 'com.eyu.opensdk.ad.mediation:admob-compat_adapter:19.8.0.28'
     
     //facebook
-    //implementation 'com.eyu.opensdk.ad.mediation:facebook-adapter:6.3.0.27'
+    //implementation 'com.eyu.opensdk.ad.mediation:facebook-adapter:6.3.0.28'
     
     //applovin
-    //implementation 'com.eyu.opensdk.ad.mediation:applovin-adapter:9.15.1.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:applovin-adapter:10.1.2.28'
     
     //mtg
-    //implementation 'com.eyu.opensdk.ad.mediation:mtg-adapter:15.2.41.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:mtg-adapter:15.2.41.28'
     
     //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-adapter:3.5.0.5.26'
+    //implementation 'com.eyu.opensdk.ad.mediation:pangle-adapter:3.5.0.5.28'
     
     //unity
-    //implementation 'com.eyu.opensdk.ad.mediation:unity-adapter:3.4.8.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:unity-adapter:3.4.8.28'
     
     //vungle
-    //implementation 'com.eyu.opensdk.ad.mediation:vungle-adapter:6.8.1.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:vungle-adapter:6.8.1.28'
 
     //tradplus
-    //implementation 'com.eyu.opensdk.ad.mediation:tradplus-adapter:5.2.8.1.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:tradplus-adapter:5.2.8.1.28'
 }
 
 ```
