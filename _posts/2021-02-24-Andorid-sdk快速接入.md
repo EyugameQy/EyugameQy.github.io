@@ -199,11 +199,11 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 
 ## 广告配置
 
-广告配置有三个文件
+广告配置有三(四)个文件
 > ad_setting.json
 > ad_cache_setting.json
 > ad_key_setting.json
-
+> and_ad_group_setting.json（此文件不一定有）
 实际给到的名字前面可能会有and_前缀，将它们放到引入的库工程中**res/raw**目录下<br>
 确认下 ad_setting.json中的id字段和引入库工程中SDKHelper类下的字段一致
 

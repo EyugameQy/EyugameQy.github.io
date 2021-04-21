@@ -318,7 +318,7 @@ SdkCompat.getInstance().init(Application, builder);
 
 ## 广告配置
 
-广告配置有三个文件，ad_setting.json，ad_cache_setting.json，ad_key_setting.json，实际给到的名字前面可能会有and_前缀，将它们放到**res/raw**目录下，将后面会用到。
+广告配置有三个文件，ad_setting.json，ad_cache_setting.json，ad_key_setting.json，and_ad_group_setting.json（此文件不一定有）实际给到的名字前面可能会有and_前缀，将它们放到**res/raw**目录下，将后面会用到。
 
 ## 广告初始化
 
@@ -339,6 +339,7 @@ adConfig.setAdKeyConfigResource(this, R.raw.ad_key_setting);
 //前面提到的ad_cache_setting.json
 adConfig.setAdGroupConfigResource(this, R.raw.ad_cache_setting);
 //adConfig.setAdGroupConfigStr
+adConfig.setAdGroupChildStr(this, R.raw.and_ad_group_setting);
 
 
 Bundle bundle = new Bundle();
