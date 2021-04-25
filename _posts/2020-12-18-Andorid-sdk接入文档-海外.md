@@ -180,7 +180,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 ```groovy
 
-implementation 'com.eyu.opensdk:core:1.8.9'
+implementation 'com.eyu.opensdk:core:1.8.11'
 implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.2.32'
 
 ```
