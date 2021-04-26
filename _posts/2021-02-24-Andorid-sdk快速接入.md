@@ -1,7 +1,7 @@
 ---
 title: Android快速接入
 author: wuxiaowei
-date: 2021-04-12 18:00:00 +0800
+date: 2021-04-25 09:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,快速接入]
 pin: true
@@ -157,18 +157,18 @@ dependencies {
     //-----------------国内需要引入的--------------------
 
     //sdk核心库（国内必须）
-    implementation 'com.eyu.opensdk:core-ch:1.7.34'
+    implementation 'com.eyu.opensdk:core-ch:1.8.11'
 
         //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.6.32'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.33'
     
     //-----------------国外需要引入的--------------------
 
     //sdk核心库（国外必须）
-    implementation 'com.eyu.opensdk:core:1.7.36'
+    implementation 'com.eyu.opensdk:core:1.8.11'
     
     //国外通常使用max
-    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
+    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.2.32'
 
 }
 ```
@@ -199,11 +199,11 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 
 ## 广告配置
 
-广告配置有三个文件
+广告配置有三(四)个文件
 > ad_setting.json
 > ad_cache_setting.json
 > ad_key_setting.json
-
+> and_ad_group_setting.json（此文件不一定有）
 实际给到的名字前面可能会有and_前缀，将它们放到引入的库工程中**res/raw**目录下<br>
 确认下 ad_setting.json中的id字段和引入库工程中SDKHelper类下的字段一致
 

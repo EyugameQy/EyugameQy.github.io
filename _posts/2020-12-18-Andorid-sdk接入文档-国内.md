@@ -1,7 +1,7 @@
 ---
 title: Android自主接入文档（国内）
 author: wuxiaowei
-date: 2021-04-12 17:00:00 +0800
+date: 2021-04-25 09:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,国内]
 pin: true
@@ -176,24 +176,25 @@ dependencies {
     //implementation 'com.eyu:eyulibrary:xxx'
     
     //sdk核心库（必须）
-    implementation 'com.eyu.opensdk:core-ch:1.7.34'
+    implementation 'com.eyu.opensdk:core-ch:1.8.11'
     
     //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.6.32'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.33'
     
     //按需求引入广告平台
 
     //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.6.32'
+    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.33'
+
 
     //广点通
-    //implementation 'com.eyu.opensdk.ad.mediation:gdt-adapter:4.294.1164.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:gdt-adapter:4.294.1164.28'
 
      //topon
-    //implementation 'com.eyu.opensdk.ad.mediation:topon-adapter:5.7.11.26'
+    //implementation 'com.eyu.opensdk.ad.mediation:topon-adapter:5.7.25.28'
 
         //mtg
-    //implementation 'com.eyu.opensdk.ad.mediation:mtg-ch-adapter:13.0.41.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:mtg-ch-adapter:13.0.41.28'
 }
 ```
 
@@ -334,7 +335,7 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 
 ## 广告配置
 
-广告配置有三个文件，ad_setting.json，ad_cache_setting.json，ad_key_setting.json，实际给到的名字前面可能会有and_前缀，将它们放到**res/raw**目录下，将后面会用到。
+广告配置有三个文件，ad_setting.json，ad_cache_setting.json，ad_key_setting.json，and_ad_group_setting.json（此文件不一定有）实际给到的名字前面可能会有and_前缀，将它们放到**res/raw**目录下，将后面会用到。
 
 
 ## 广告初始化
@@ -355,6 +356,9 @@ adConfig.setAdKeyConfigResource(this, R.raw.ad_key_setting);
 //前面提到的ad_cache_setting.json
 adConfig.setAdGroupConfigResource(this, R.raw.ad_cache_setting);
 //adConfig.setAdGroupConfigStr
+
+adConfig.setAdGroupChildStr(this, R.raw.and_ad_group_setting);
+
 
 //穿山甲
 bundle = new Bundle();

@@ -1,7 +1,7 @@
 ---
 title: Android自主接入文档（国外）
 author: wuxiaowei
-date: 2021-04-12 17:00:00 +0800
+date: 2021-04-25 09:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,海外]
 pin: true
@@ -180,8 +180,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 ```groovy
 
-implementation 'com.eyu.opensdk:core:1.7.36'
-implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
+implementation 'com.eyu.opensdk:core:1.8.11'
+implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.2.32'
 
 ```
 
@@ -198,34 +198,34 @@ implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
 dependencies {
 
     //max
-    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.1.30'
+    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.1.2.32'
 
     //admob    
-    //implementation 'com.eyu.opensdk.ad.mediation:admob-adapter:19.8.0.27'
+    //implementation 'com.eyu.opensdk.ad.mediation:admob-adapter:19.8.0.28'
 
     //admob聚合
-    //implementation 'com.eyu.opensdk.ad.mediation:admob-compat_adapter:19.8.0.27'
+    //implementation 'com.eyu.opensdk.ad.mediation:admob-compat_adapter:19.8.0.28'
     
     //facebook
-    //implementation 'com.eyu.opensdk.ad.mediation:facebook-adapter:6.3.0.27'
+    //implementation 'com.eyu.opensdk.ad.mediation:facebook-adapter:6.3.0.28'
     
     //applovin
-    //implementation 'com.eyu.opensdk.ad.mediation:applovin-adapter:9.15.1.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:applovin-adapter:10.1.2.28'
     
     //mtg
-    //implementation 'com.eyu.opensdk.ad.mediation:mtg-adapter:15.2.41.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:mtg-adapter:15.2.41.28'
     
     //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-adapter:3.5.0.5.26'
+    //implementation 'com.eyu.opensdk.ad.mediation:pangle-adapter:3.5.0.5.28'
     
     //unity
-    //implementation 'com.eyu.opensdk.ad.mediation:unity-adapter:3.4.8.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:unity-adapter:3.4.8.28'
     
     //vungle
-    //implementation 'com.eyu.opensdk.ad.mediation:vungle-adapter:6.8.1.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:vungle-adapter:6.8.1.28'
 
     //tradplus
-    //implementation 'com.eyu.opensdk.ad.mediation:tradplus-adapter:5.2.8.1.24'
+    //implementation 'com.eyu.opensdk.ad.mediation:tradplus-adapter:5.2.8.1.28'
 }
 
 ```
@@ -318,7 +318,7 @@ SdkCompat.getInstance().init(Application, builder);
 
 ## 广告配置
 
-广告配置有三个文件，ad_setting.json，ad_cache_setting.json，ad_key_setting.json，实际给到的名字前面可能会有and_前缀，将它们放到**res/raw**目录下，将后面会用到。
+广告配置有三个文件，ad_setting.json，ad_cache_setting.json，ad_key_setting.json，and_ad_group_setting.json（此文件不一定有）实际给到的名字前面可能会有and_前缀，将它们放到**res/raw**目录下，将后面会用到。
 
 ## 广告初始化
 
@@ -339,6 +339,7 @@ adConfig.setAdKeyConfigResource(this, R.raw.ad_key_setting);
 //前面提到的ad_cache_setting.json
 adConfig.setAdGroupConfigResource(this, R.raw.ad_cache_setting);
 //adConfig.setAdGroupConfigStr
+adConfig.setAdGroupChildStr(this, R.raw.and_ad_group_setting);
 
 
 Bundle bundle = new Bundle();
