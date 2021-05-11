@@ -44,8 +44,8 @@ pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk'
     AdmobMediation    :'admob_mediation_sdk'        ADMOB_MEDIATION_ENABLED ADMOB_ADS_ENABLED
     TradPlus          :'tradplus_sdk'               TRADPLUS_ENABLED
     穿山甲聚合(abu)     :'abu_ad_sdk'                 ABUADSDK_ENABLED
-    mopub             :'abu_ad_sdk'                 ABUADSDK_ENABLED
-    sigmob            :'mopub_ad_sdk'               MOPUB_ENABLED
+    mopub             :'mopub_ad_sdk'               MOPUB_ENABLED
+    sigmob            :'sigmob_ads_sdk'             
     
     数数(Thinking)     :'thinking_sdk'               THINKING_ENABLED
     友盟               :'um_sdk'                     UM_ENABLED
