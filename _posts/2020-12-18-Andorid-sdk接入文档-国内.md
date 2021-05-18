@@ -176,7 +176,7 @@ dependencies {
     //implementation 'com.eyu:eyulibrary:xxx'
     
     //sdk核心库（必须）
-    implementation 'com.eyu.opensdk:core-ch:1.8.23'
+    implementation 'com.eyu.opensdk:core-ch:1.8.24'
     
     //国内通常使用穿山甲
     implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.34'
@@ -188,7 +188,7 @@ dependencies {
 
 
     //广点通
-    //implementation 'com.eyu.opensdk.ad.mediation:gdt-adapter:4.294.1164.28'
+    //implementation 'com.eyu.opensdk.ad.mediation:gdt-adapter:4.360.1230.29'
 
      //topon
     //implementation 'com.eyu.opensdk.ad.mediation:topon-adapter:5.7.25.28'
