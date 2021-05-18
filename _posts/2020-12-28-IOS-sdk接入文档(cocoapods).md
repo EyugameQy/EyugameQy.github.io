@@ -13,7 +13,7 @@ pin: true
 ## 一.SDK集成
 ### 1、本SDK所有第三方sdk均可以模块形式集成，podfile的写法如下
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.0.9'
+pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.0'
 ```
 
 举例：
