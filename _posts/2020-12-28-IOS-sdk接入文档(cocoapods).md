@@ -13,12 +13,12 @@ pin: true
 ## 一.SDK集成
 ### 1、本SDK所有第三方sdk均可以模块形式集成，podfile的写法如下
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.2'
+pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.3'
 ```
 
 举例：
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.2'
+pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.3'
 ```
 
 下面是所有模块及对应的需要添加的预编译宏
@@ -258,8 +258,9 @@ AdmobMediation  需要在GCC_PREPROCESSOR_DEFINITIONS 加上 ADMOB_MEDIATION_ENA
 ```txt
 Thinking  需要在GCC_PREPROCESSOR_DEFINITIONS 加上 THINKING_ENABLED 
 
-//默认使用云服务，服务器地址: https://receiver.ta.thinkingdata.cn 
-[EYSdkUtils initThinkWithAppID:APP_ID]; 
+//isInCN：是否是国内应用
+//默认服务器地址 国内：https://data-cn-qy.eyugame.com 海外：https://data-qy.gogogame.com
+[EYSdkUtils initThinkWithAppID:@"your_think_id" isInCN:isInCN];
 
 //如果您使用的是私有化部署的版本请传入自己的url地址 
 [EYSdkUtils initThinkWithAppID:APP_ID Url:SERVER_URL]; 
