@@ -13,12 +13,12 @@ pin: true
 ## 一.SDK集成
 ### 1、本SDK所有第三方sdk均可以模块形式集成，podfile的写法如下
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.3'
+pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.4'
 ```
 
 举例：
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.3'
+pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.4'
 ```
 
 下面是所有模块及对应的需要添加的预编译宏
@@ -316,6 +316,13 @@ bool isBannerAdLoaded = [[EYAdManager sharedInstance] isBannerAdLoaded: placeId]
 bool isInterstitialAdLoaded = [[EYAdManager sharedInstance] isInterstitialAdLoaded: placeId];
 bool isRewardAdLoaded = [[EYAdManager sharedInstance] isRewardAdLoaded: placeId];
 bool isSplashAdLoaded = [[EYAdManager sharedInstance] isSplashAdLoaded: placeId];
+
+//判断高优先级广告是否加载完成
+bool isNativeAdLoaded = [[EYAdManager sharedInstance] isHighPriorityNativeAdLoaded: placeId];
+bool isBannerAdLoaded = [[EYAdManager sharedInstance] isHighPriorityBannerAdLoaded: placeId];
+bool isInterstitialAdLoaded = [[EYAdManager sharedInstance] isHighPriorityInterstitialAdLoaded: placeId];
+bool isRewardAdLoaded = [[EYAdManager sharedInstance] isHighPriorityRewardAdLoaded: placeId];
+bool isSplashAdLoaded = [[EYAdManager sharedInstance] isHighPrioritySplashAdLoaded: placeId];
 ```
 
 ## 四.显示广告
