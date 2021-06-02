@@ -1,7 +1,7 @@
 ---
 title: Android自主接入文档（国内）
 author: wuxiaowei
-date: 2021-05-06 13:00:00 +0800
+date: 2021-05-26 13:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,国内]
 pin: true
@@ -176,15 +176,15 @@ dependencies {
     //implementation 'com.eyu:eyulibrary:xxx'
     
     //sdk核心库（必须）
-    implementation 'com.eyu.opensdk:core-ch:1.9.2'
+    implementation 'com.eyu.opensdk:core-ch:1.9.6'
     
     //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.34'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.35'
     
     //按需求引入广告平台
 
     //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.34'
+    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.35'
 
 
     //广点通
