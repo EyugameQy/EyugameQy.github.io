@@ -311,6 +311,7 @@ adConfig.mopubAdParams = @{@"mopubAdUnitId": @"faeaaa4fbbc944919b358e8308eb08ab"
 [[EYAdManager sharedInstance] loadSplashAd: placeId];
 
 //判断广告是否加载完成
+bool isAdLoaded = [[EYAdManager sharedInstance] isAdLoaaded: placeId];
 bool isNativeAdLoaded = [[EYAdManager sharedInstance] isNativeAdLoaded: placeId];
 bool isBannerAdLoaded = [[EYAdManager sharedInstance] isBannerAdLoaded: placeId];
 bool isInterstitialAdLoaded = [[EYAdManager sharedInstance] isInterstitialAdLoaded: placeId];
@@ -318,6 +319,7 @@ bool isRewardAdLoaded = [[EYAdManager sharedInstance] isRewardAdLoaded: placeId]
 bool isSplashAdLoaded = [[EYAdManager sharedInstance] isSplashAdLoaded: placeId];
 
 //判断高优先级广告是否加载完成
+bool isAdLoaded = [[EYAdManager sharedInstance] isHighPriorityAdLoaded: placeId];
 bool isNativeAdLoaded = [[EYAdManager sharedInstance] isHighPriorityNativeAdLoaded: placeId];
 bool isBannerAdLoaded = [[EYAdManager sharedInstance] isHighPriorityBannerAdLoaded: placeId];
 bool isInterstitialAdLoaded = [[EYAdManager sharedInstance] isHighPriorityInterstitialAdLoaded: placeId];
