@@ -1,5 +1,5 @@
 ---
-title: IOS接入文档-cocoapods（推荐）
+title: IOS广告SDK接入文档-cocoapods（推荐）
 author: tangmingding
 date: 2021-3-17 15:00:00 +0800
 categories: [Blogging, Tutorial]
@@ -13,12 +13,12 @@ pin: true
 ## 一.SDK集成
 ### 1、本SDK所有第三方sdk均可以模块形式集成，podfile的写法如下
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.5'
+pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.13'
 ```
 
 举例：
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.5'
+pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.13'
 ```
 
 下面是所有模块及对应的需要添加的预编译宏
@@ -311,6 +311,7 @@ adConfig.mopubAdParams = @{@"mopubAdUnitId": @"faeaaa4fbbc944919b358e8308eb08ab"
 [[EYAdManager sharedInstance] loadSplashAd: placeId];
 
 //判断广告是否加载完成
+bool isAdLoaded = [[EYAdManager sharedInstance] isAdLoaaded: placeId];
 bool isNativeAdLoaded = [[EYAdManager sharedInstance] isNativeAdLoaded: placeId];
 bool isBannerAdLoaded = [[EYAdManager sharedInstance] isBannerAdLoaded: placeId];
 bool isInterstitialAdLoaded = [[EYAdManager sharedInstance] isInterstitialAdLoaded: placeId];
@@ -318,6 +319,7 @@ bool isRewardAdLoaded = [[EYAdManager sharedInstance] isRewardAdLoaded: placeId]
 bool isSplashAdLoaded = [[EYAdManager sharedInstance] isSplashAdLoaded: placeId];
 
 //判断高优先级广告是否加载完成
+bool isAdLoaded = [[EYAdManager sharedInstance] isHighPriorityAdLoaded: placeId];
 bool isNativeAdLoaded = [[EYAdManager sharedInstance] isHighPriorityNativeAdLoaded: placeId];
 bool isBannerAdLoaded = [[EYAdManager sharedInstance] isHighPriorityBannerAdLoaded: placeId];
 bool isInterstitialAdLoaded = [[EYAdManager sharedInstance] isHighPriorityInterstitialAdLoaded: placeId];
@@ -363,7 +365,7 @@ bool isSuccess = [[EYAdManager sharedInstance] showBannerAd:@"banner_ad" viewGro
     NSLog(@"广告展示 onAdShowed adPlaceId = %@, type = %@", adPlaceId, type);
 }
 
-//广告展示后的回调(带回调数据)，可选代理方法，目前仅topOn会回调此函数
+//广告获取到ecpm的回调，可选代理方法，目前仅topOn及max会回调此函数
 //extraData即位回调的数据字典,其中adsource_price字段即为eCPM,其单位可通过currency字段获取, //精度可通过precision字段获取
 - (void)onAdShowed:(NSString *)adPlaceId type:(NSString *)type extraData:(NSDictionary *)extraData
 {
