@@ -36,6 +36,10 @@ android.enableJetifier=true
         }
         ...
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
 ```
 
@@ -66,6 +70,9 @@ buildscript {
        }
         maven { url "https://fyber.bintray.com/marketplace" }
         maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
+            maven {
+                url 'https://artifact.bytedance.com/repository/pangle'
+            }
     }
     dependencies {
         //   当前使用->建议升级版本<br>
@@ -99,6 +106,9 @@ allprojects {
          }
         maven { url "https://fyber.bintray.com/marketplace" }
         maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
+            maven {
+                url 'https://artifact.bytedance.com/repository/pangle'
+            }
     }
 }
 ```
