@@ -186,8 +186,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 ```groovy
 
-implementation 'com.eyu.opensdk:core:1.9.11'
-implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.39'
+implementation 'com.eyu.opensdk:core:1.9.12'
+implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.41'
 
 ```
 
@@ -204,7 +204,7 @@ implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.39'
 dependencies {
 
     //max
-    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.39'
+    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.41'
 
     //admob    
     //implementation 'com.eyu.opensdk.ad.mediation:admob-adapter:20.1.0.28'
