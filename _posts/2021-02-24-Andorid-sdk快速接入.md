@@ -178,7 +178,7 @@ dependencies {
     implementation 'com.eyu.opensdk:core:1.9.12'
     
     //国外通常使用max
-    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.41'
+    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.1.43'
 
 }
 ```
