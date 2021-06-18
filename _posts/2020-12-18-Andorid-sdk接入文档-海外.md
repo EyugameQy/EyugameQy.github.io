@@ -1,7 +1,7 @@
 ---
 title: Android自主接入文档（国外）
 author: wuxiaowei
-date: 2021-05-26 13:00:00 +0800
+date: 2021-05-31 13:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,海外]
 pin: true
@@ -129,6 +129,9 @@ buildscript {
        }
         maven { url "https://fyber.bintray.com/marketplace" }
         maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
+           maven {
+                url 'https://artifact.bytedance.com/repository/pangle'
+            }
     }
     dependencies {
         classpath 'com.google.gms:google-services:4.2.0'
@@ -153,6 +156,9 @@ allprojects {
          }
         maven { url "https://fyber.bintray.com/marketplace" }
         maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
+           maven {
+                url 'https://artifact.bytedance.com/repository/pangle'
+            }
     }
 }
 ```
@@ -180,8 +186,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 ```groovy
 
-implementation 'com.eyu.opensdk:core:1.9.6'
-implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.35'
+implementation 'com.eyu.opensdk:core:1.9.12'
+implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.1.43'
 
 ```
 
@@ -198,7 +204,7 @@ implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.35'
 dependencies {
 
     //max
-    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.0.35'
+    //implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.1.43'
 
     //admob    
     //implementation 'com.eyu.opensdk.ad.mediation:admob-adapter:20.1.0.28'
@@ -216,7 +222,7 @@ dependencies {
     //implementation 'com.eyu.opensdk.ad.mediation:mtg-adapter:15.2.41.28'
     
     //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-adapter:3.5.0.5.28'
+    //implementation 'com.eyu.opensdk.ad.mediation:pangle-adapter:3.5.0.5.29'
     
     //unity
     //implementation 'com.eyu.opensdk.ad.mediation:unity-adapter:3.4.8.28'
@@ -385,47 +391,52 @@ Bundle bundle = new Bundle();
 //bundle.putString(PlatformExtras.COMMON_APP_ID, "");
 //adConfig.addPlatformConfig(AdPlatform.TRADPLUS, bundle);
 
-EyuAdManager.getInstance().config(MainActivity.this, adConfig, new EyuAdsListener() {
+EyuAdManager.getInstance().config(MainActivity.this, adConfig, new EyuAdListener() {
+        @Override
+        public void onAdReward(EyuAd ad) {
 
-    @Override
-    public void onAdReward(AdFormat type, String placeId) {
-        //激励视频获得奖励，type.getLable()获得广告类型，placeId为广告位置
-    }
+        }
 
-    @Override
-    public void onAdLoaded(AdFormat type, String placeId) {
-        //广告加载成功
-    }
+        @Override
+        public void onAdLoaded(EyuAd ad) {
 
-    @Override
-    public void onAdShowed(AdFormat type, String placeId) {
-        //广告展示
-    }
+        }
 
-    @Override
-    public void onAdClosed(AdFormat type, String placeId) {
-        //广告被关闭
-    }
+        @Override
+        public void onAdShowed(EyuAd ad) {
 
-    @Override
-    public void onAdClicked(AdFormat type, String placeId) {
-        //广告被点击
-    }
+        }
 
-    @Override
-    public void onDefaultNativeAdClicked() {
+        @Override
+        public void onAdClosed(EyuAd ad) {
 
-    }
+        }
 
-    @Override
-    public void onAdLoadFailed(AdFormat type, String placeId, String key, int code) {
-        //广告加载失败，如果没有广告展示，可以过滤日志onAdLoadFailed查看广告加载失败原因
-    }
+        @Override
+        public void onAdClicked(EyuAd ad) {
 
-    @Override
-    public void onImpression(AdFormat type, String placeId) {
-        //广告展示，同onAdShowed
-    }
+        }
+
+        @Override
+        public void onDefaultNativeAdClicked(EyuAd ad) {
+
+        }
+
+        @Override
+        public void onAdLoadFailed(EyuAd ad, LoadAdError loadAdError) {
+
+        }
+
+        @Override
+        public void onImpression(EyuAd ad) {
+
+        }
+
+        @Override
+        public void onAdRevenuePained(EyuAd ad) {
+
+        }
+    });
 
 });
    
@@ -438,33 +449,33 @@ EyuAdManager.getInstance().config(MainActivity.this, adConfig, new EyuAdsListene
 ### 判断广告是否有可用的广告
 
 ```java
-EyuAdManager.getInstance().isAdLoaded(AdFormat,"adPlaceId")
+EyuAdManager.getInstance().isAdLoaded("adPlaceId")
 ```
 
 ### 展示激励视频
 
 ```java
-EyuAdManager.getInstance().show(AdFormat.REWARDED, Activity,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,"adPlaceId");
 ```
 
 ### 展示插屏
 
 ```java
-EyuAdManager.getInstance().show(AdFormat.INTERSTITIAL, Activity,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,"adPlaceId");
 ```
 
 ### 展示banner
 
 需要传入一个ViewGroup，这个group是用来放banner的
 ```java
-EyuAdManager.getInstance().show(AdFormat.BANNER, Activity,ViewGroup,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,ViewGroup,"adPlaceId");
 ```
 
 ### 展示原生广告
 
 需要传入一个ViewGroup，这个group是用来放native的
 ```java
-EyuAdManager.getInstance().show(AdFormat.NATIVE, Activity,ViewGroup,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,ViewGroup,"adPlaceId");
 
 ```
 

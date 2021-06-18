@@ -1,7 +1,7 @@
 ---
 title: Android快速接入
 author: wuxiaowei
-date: 2021-05-06 13:00:00 +0800
+date: 2021-05-31 13:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,快速接入]
 pin: true
@@ -36,6 +36,10 @@ android.enableJetifier=true
         }
         ...
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
 ```
 
@@ -66,6 +70,9 @@ buildscript {
        }
         maven { url "https://fyber.bintray.com/marketplace" }
         maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
+            maven {
+                url 'https://artifact.bytedance.com/repository/pangle'
+            }
     }
     dependencies {
         //   当前使用->建议升级版本<br>
@@ -99,6 +106,9 @@ allprojects {
          }
         maven { url "https://fyber.bintray.com/marketplace" }
         maven { url "https://dl.bintray.com/ironsource-mobile/android-sdk" }
+            maven {
+                url 'https://artifact.bytedance.com/repository/pangle'
+            }
     }
 }
 ```
@@ -157,18 +167,18 @@ dependencies {
     //-----------------国内需要引入的--------------------
 
     //sdk核心库（国内必须）
-    implementation 'com.eyu.opensdk:core-ch:1.9.6'
+    implementation 'com.eyu.opensdk:core-ch:1.9.12'
 
         //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.5.0.8.34'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.36'
     
     //-----------------国外需要引入的--------------------
 
     //sdk核心库（国外必须）
-    implementation 'com.eyu.opensdk:core:1.8.24'
+    implementation 'com.eyu.opensdk:core:1.9.12'
     
     //国外通常使用max
-    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.2.1.34'
+    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.1.43'
 
 }
 ```

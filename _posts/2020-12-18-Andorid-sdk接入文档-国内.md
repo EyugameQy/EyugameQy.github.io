@@ -1,7 +1,7 @@
 ---
 title: Android自主接入文档（国内）
 author: wuxiaowei
-date: 2021-05-26 13:00:00 +0800
+date: 2021-05-31 13:00:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Android,国内]
 pin: true
@@ -176,15 +176,15 @@ dependencies {
     //implementation 'com.eyu:eyulibrary:xxx'
     
     //sdk核心库（必须）
-    implementation 'com.eyu.opensdk:core-ch:1.9.6'
+    implementation 'com.eyu.opensdk:core-ch:1.9.12'
     
     //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.35'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.36'
     
     //按需求引入广告平台
 
     //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.35'
+    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.36'
 
 
     //广点通
@@ -220,62 +220,7 @@ dependencies {
 按需引入以下配置到manifest文件，根据你所引入的库来决定引入哪些
 
 ```xml
-    <!-- 穿山甲 start -->
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="${applicationId}.TTMultiProvider"
-            android:exported="false" />
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="${applicationId}.TTFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/anythink_bk_tt_file_path" />
-        </provider>
-    <!-- 穿山甲 end -->
-        <!-- source file: china/network_sdk/baidu/AndroidManifest.xml -->
-        <!-- 非信息广告必须添加 -->
-        <activity
-            android:name="com.baidu.mobads.AppActivity"
-            android:configChanges="screenSize|keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
-        <provider
-            android:name="com.baidu.mobads.openad.BdFileProvider"
-            android:authorities="${applicationId}.bd.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/anythink_bk_baidu_file_path" />
-        </provider>
-        <!-- source file: china/network_sdk/sigmob/AndroidManifest.xml -->
-
-        <!-- targetSDKVersion >= 24时才需要添加这个provider。
-        provider的authorities属性的值为${applicationId}.sigprovider -->
-        <provider
-            android:name="com.sigmob.sdk.SigmobFileProvider"
-            android:authorities="${applicationId}.sigprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/anythink_bk_sigmob_file_path"/>
-        </provider>
-
-        <!-- source file: china/network_sdk/gdt/AndroidManifest.xml -->
-
-        <provider
-            android:name="com.qq.e.comm.GDTFileProvider"
-            android:authorities="${applicationId}.gdt.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/anythink_bk_gdt_file_path" />
-        </provider>
 ```
 
 ## mtg
@@ -304,7 +249,7 @@ builder.setDebugMode(BuildConfig.DEBUG);
 //builder.configTrackingIO("appKey");
 
 //友盟
-//builder.initUmeng("appKey","channel");
+//builder.configUmeng("appKey","channel");
 
 //数数的统计初始化
 //builder.configThinkData("appid");
@@ -363,7 +308,7 @@ adConfig.setAdGroupChildStr(this, R.raw.and_ad_group_setting);
 //穿山甲
 bundle = new Bundle();
 bundle.putString(PlatformExtras.COMMON_APP_ID, "");
-bundle.putString(PangleExtras.APP_NAME, "");
+bundle.putString(PlatformExtras.COMMON_APP_NAME, "");
 adConfig.addPlatformConfig(AdPlatform.PANGLE, bundle);
 
 //mtg
@@ -383,55 +328,58 @@ adConfig.addPlatformConfig(AdPlatform.PANGLE, bundle);
 //bundle.putString(PlatformExtras.COMMON_APP_ID, "");
 //adConfig.addPlatformConfig(AdPlatform.GDT, bundle);
 
-EyuAdManager.getInstance().config(MainActivity.this, adConfig, new EyuAdsListener() {
+EyuAdManager.getInstance().config(MainActivity.this, adConfig, new EyuAdListener() {
+        @Override
+        public void onAdReward(EyuAd ad) {
 
-    @Override
-    public void onAdReward(AdFormat type, String placeId) {
-        //激励视频获得奖励，type.getLable()获得广告类型，placeId为广告位置
-    }
+        }
 
-    @Override
-    public void onAdLoaded(AdFormat type, String placeId) {
-        //广告加载成功
-    }
+        @Override
+        public void onAdLoaded(EyuAd ad) {
 
-    @Override
-    public void onAdShowed(AdFormat type, String placeId) {
-        //广告展示
-    }
+        }
 
-    @Override
-    public void onAdClosed(AdFormat type, String placeId) {
-        //广告被关闭
-    }
+        @Override
+        public void onAdShowed(EyuAd ad) {
 
-    @Override
-    public void onAdClicked(AdFormat type, String placeId) {
-        //广告被点击
-    }
+        }
 
-    @Override
-    public void onDefaultNativeAdClicked() {
+        @Override
+        public void onAdClosed(EyuAd ad) {
 
-    }
+        }
 
-    @Override
-    public void onAdLoadFailed(AdFormat type, String placeId, String key, int code) {
-        //广告加载失败，如果没有广告展示，可以过滤日志onAdLoadFailed查看广告加载失败原因
-    }
+        @Override
+        public void onAdClicked(EyuAd ad) {
 
-    @Override
-    public void onImpression(AdFormat type, String placeId) {
-        //广告展示，同onAdShowed
-    }
+        }
 
-});
+        @Override
+        public void onDefaultNativeAdClicked(EyuAd ad) {
+
+        }
+
+        @Override
+        public void onAdLoadFailed(EyuAd ad, LoadAdError loadAdError) {
+
+        }
+
+        @Override
+        public void onImpression(EyuAd ad) {
+
+        }
+
+        @Override
+        public void onAdRevenuePained(EyuAd ad) {
+
+        }
+    });
    
 ```
 
 ## 广告使用示例
 
-调用EyuAdManager.getInstance().show(AdFormat,"adPlaceId")方法展示广告，传入的**adPlaceId** 为前面提到的**ad_setting.json**中的id
+调用EyuAdManager.getInstance().show("adPlaceId")方法展示广告，传入的**adPlaceId** 为前面提到的**ad_setting.json**中的id
 
 ### 判断广告是否有可用的广告
 
@@ -442,27 +390,27 @@ EyuAdManager.getInstance().isAdLoaded(AdFormat,"adPlaceId")
 ### 展示激励视频
 
 ```java
-EyuAdManager.getInstance().show(AdFormat.REWARDED, Activity,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,"adPlaceId");
 ```
 
 ### 展示插屏
 
 ```java
-EyuAdManager.getInstance().show(AdFormat.INTERSTITIAL, Activity,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,"adPlaceId");
 ```
 
 ### 展示banner
 
 需要传入一个ViewGroup，这个group是用来放banner的
 ```java
-EyuAdManager.getInstance().show(AdFormat.BANNER, Activity,ViewGroup,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,ViewGroup,"adPlaceId");
 ```
 
 ### 展示原生广告
 
 需要传入一个ViewGroup，这个group是用来放native的
 ```java
-EyuAdManager.getInstance().show(AdFormat.NATIVE, Activity,ViewGroup,"adPlaceId");
+EyuAdManager.getInstance().show(Activity,ViewGroup,"adPlaceId");
 
 ```
 
