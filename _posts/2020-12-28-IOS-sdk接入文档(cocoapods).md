@@ -13,12 +13,12 @@ pin: true
 ## 一.SDK集成
 ### 1、本SDK所有第三方sdk均可以模块形式集成，podfile的写法如下
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.14'
+pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.16'
 ```
 
 举例：
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.14'
+pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.16'
 ```
 
 下面是所有模块及对应的需要添加的预编译宏
@@ -366,7 +366,7 @@ bool isSuccess = [[EYAdManager sharedInstance] showBannerAd:@"banner_ad" viewGro
 }
 
 //广告获取到ecpm的回调，可选代理方法，目前仅topOn及max会回调此函数
-//extraData即位回调的数据字典,其中adsource_price字段即为eCPM,其单位可通过currency字段获取, //精度可通过precision字段获取
+//extraData即位回调的数据字典,其中adsource_price字段即为eCPM, unitId表示广告key, unitName表示广告keyID, "placeId"表示广告位id, adFormat表示广告类型, mediator表示广告平台， networkName表示广告具体平台
 - (void)onAdShowed:(NSString *)adPlaceId type:(NSString *)type extraData:(NSDictionary *)extraData
 {
     NSLog(@"广告展示 extraData = %@", extraData);
@@ -382,7 +382,7 @@ bool isSuccess = [[EYAdManager sharedInstance] showBannerAd:@"banner_ad" viewGro
     NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", adPlaceId, type);
 }
 
-- (void)onAdLoadFailed:(nonnull NSString *)adPlaceId key:(nonnull NSString *)key code:(int)code 
+- (void)onAdLoadFailed:(nonnull NSString *)adPlaceId type:(NSString*)type key:(nonnull NSString *)key code:(int)code 
 {
     NSLog(@"广告加载失败 onAdLoadFailed adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
 }
