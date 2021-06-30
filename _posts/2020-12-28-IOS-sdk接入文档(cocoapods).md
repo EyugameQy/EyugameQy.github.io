@@ -13,12 +13,12 @@ pin: true
 ## 一.SDK集成
 ### 1、本SDK所有第三方sdk均可以模块形式集成，podfile的写法如下
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.19'
+pod 'EyuLibrary-ios',:subspecs => ['Core','模块一','模块二'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.2.0'
 ```
 
 举例：
 ```pod
-pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.1.19'
+pod 'EyuLibrary-ios',:subspecs => ['Core','um_sdk', 'af_sdk', 'applovin_max_sdk','gdt_ads_sdk',  'firebase_sdk'], :git => 'https://github.com/EyugameQy/EyuLibrary-ios.git',:tag =>'2.2.0'
 ```
 
 下面是所有模块及对应的需要添加的预编译宏
@@ -350,50 +350,49 @@ bool isSuccess = [[EYAdManager sharedInstance] showBannerAd:@"banner_ad" viewGro
 [[EYAdManager sharedInstance] setDelegate:self];
 
 //广告回掉EYAdDelegate
--(void) onAdLoaded:(NSString*) adPlaceId type:(NSString*)type
+- (void)onAdLoaded:(EYuAd *)eyuAd {
 {
-    NSLog(@"广告加载完成 onAdLoaded adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"广告加载完成 onAdLoaded adPlaceId = %@, eyuAd.placeId, eyuAd.adFormat);
 }
 
--(void) onAdReward:(NSString*) adPlaceId  type:(NSString*)type
+-(void) onAdReward:(EYuAd *)eyuAd
 {
-    NSLog(@"激励视频观看完成 onAdReward adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"激励视频观看完成 onAdReward adPlaceId = %@, eyuAd.placeId, eyuAd.adFormat);
 }
 
--(void) onAdShowed:(NSString*) adPlaceId  type:(NSString*)type
+-(void) onAdShowed:(EYuAd *)eyuAd
 {
-    NSLog(@"广告展示 onAdShowed adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"广告展示 onAdShowed adPlaceId = %@, eyuAd.placeId, eyuAd.adFormat);
 }
 
 //广告获取到ecpm的回调，可选代理方法，目前仅topOn及max会回调此函数
-//extraData即位回调的数据字典,其中adsource_price字段即为eCPM, unitId表示广告key, unitName表示广告keyID, "placeId"表示广告位id, adFormat表示广告类型, mediator表示广告平台， networkName表示广告具体平台
-- (void)onAdShowed:(NSString *)adPlaceId type:(NSString *)type extraData:(NSDictionary *)extraData
-{
-    NSLog(@"广告展示 extraData = %@", extraData);
+//adRevenue字段即为eCPM, unitId表示广告key, unitName表示广告keyID, placeId表示广告位id, adFormat表示广告类型, mediator表示广告平台， networkName表示广告具体平台
+- (void)onAdRevenue:(EYuAd *)eyuAd {
+    NSLog(@"广告ecpm ecpm = %@", eyuAd.adRevenue);
 }
 
--(void) onAdClosed:(NSString*) adPlaceId  type:(NSString*)type
+-(void) onAdClosed:(EYuAd *)eyuAd
 {
-    NSLog(@"广告关闭 onAdClosed adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"广告关闭 onAdClosed adPlaceId = %@, type = %@", eyuAd.placeId, eyuAd.adFormat);
 }
 
--(void) onAdClicked:(NSString*) adPlaceId  type:(NSString*)type
+-(void) onAdClicked:(EYuAd *)eyuAd
 {
-    NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"广告点击 onAdClicked adPlaceId = %@, type = %@", eyuAd.placeId, eyuAd.adFormat);
 }
 
-- (void)onAdLoadFailed:(nonnull NSString *)adPlaceId type:(NSString*)type key:(nonnull NSString *)key code:(int)code 
+- (void)onAdLoadFailed:(EYuAd *)eyuAd
 {
-    NSLog(@"广告加载失败 onAdLoadFailed adPlaceId = %@, key = %@, code = %d", adPlaceId, key, code);
+    NSLog(@"广告加载失败 onAdLoadFailed adPlaceId = %@, key = %@, code = %ld", eyuAd.placeId, eyuAd.unitId, eyuAd.error.code);
 }
 
 - (void)onDefaultNativeAdClicked {
     NSLog(@"默认原生广告点击 onDefaultNativeAdClicked");
 }
 
--(void) onAdImpression:(NSString*) adPlaceId  type:(NSString*)type
+-(void) onAdImpression:(EYuAd *)eyuAd
 {
-    NSLog(@"lwq, onAdImpression adPlaceId = %@, type = %@", adPlaceId, type);
+    NSLog(@"lwq, onAdImpression adPlaceId = %@, type = %@", eyuAd.placeId, eyuAd.adFormat);
 }
 ```
 
