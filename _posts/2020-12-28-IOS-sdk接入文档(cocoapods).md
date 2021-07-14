@@ -281,7 +281,7 @@ adConfig.abuAppId = APP_ID;
 
 ### 20、mopub
 ```txt
-ABUAd 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 MOPUB_ENABLED
+mopub 需要在GCC_PREPROCESSOR_DEFINITIONS 加上 MOPUB_ENABLED
 
 在infoplist配置AppLovinSdkKey
 
