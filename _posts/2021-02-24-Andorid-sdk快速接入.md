@@ -167,18 +167,18 @@ dependencies {
     //-----------------国内需要引入的--------------------
 
     //sdk核心库（国内必须）
-    implementation 'com.eyu.opensdk:core-ch:1.9.16'
+    implementation 'com.eyu.opensdk:core-ch:1.9.20'
 
         //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.36'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.8.0.3.38'
     
     //-----------------国外需要引入的--------------------
 
     //sdk核心库（国外必须）
-    implementation 'com.eyu.opensdk:core:1.9.12'
+    implementation 'com.eyu.opensdk:core:1.9.20'
     
     //国外通常使用max
-    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.1.45'
+    implementation 'com.eyu.opensdk.ad.mediation:max-adapter:10.3.1.47'
 
 }
 ```

@@ -176,16 +176,12 @@ dependencies {
     //implementation 'com.eyu:eyulibrary:xxx'
     
     //sdk核心库（必须）
-    implementation 'com.eyu.opensdk:core-ch:1.9.16'
+    implementation 'com.eyu.opensdk:core-ch:1.9.20'
     
     //国内通常使用穿山甲
-    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.36'
+    implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.8.0.3.38'
     
     //按需求引入广告平台
-
-    //穿山甲
-    //implementation 'com.eyu.opensdk.ad.mediation:pangle-ch-adapter:3.6.1.8.36'
-
 
     //广点通
     //implementation 'com.eyu.opensdk.ad.mediation:gdt-adapter:4.370.1240.31'
